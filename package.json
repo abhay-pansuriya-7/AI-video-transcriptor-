@@ -1,0 +1,20 @@
+{
+  "name": "ai-video-transcriptor",
+  "version": "1.0.0",
+  "description": "Project for fun",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "dev": "nodemon"
+  },
+  "author": "Abhay Pansuriya",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.15.29",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
