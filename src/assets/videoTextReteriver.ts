@@ -1,18 +1,22 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
-const ai = new GoogleGenerativeAI("AIzaSyC1vPmzSTefWgMqidIZpw7UpW4tlBPHv4Y");
-const model = ai.getGenerativeModel({ model: "gemini-1.5-pro" });
-async function main() {
-    const result = await model.generateContent([
-        "Generate a text file of this video like what is saying in the video.",
+import { GoogleGenAI } from "@google/genai";
+import dotenv from "dotenv";
+dotenv.config();
+const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
+export async function videoTextReteriver() {
+    const result = await ai.models.generateContent(
         {
-            fileData: {
-                fileUri: "https://www.youtube.com/watch?v=9hE5-98ZeCg",
-                mimeType: "video/mp4",
-            },
-        },
-    ]);
-    console.log(result.response.text());
+            model: "gemini-2.0-flash",
+            contents: [
+                "Generate a text file of this video like what is saying in the video.",
+                {
+                    fileData: {
+                        fileUri: "https://www.youtube.com/watch?v=9hE5-98ZeCg",
+                    },
+                },
+            ],
+        }
+
+    );
+    console.log("🤖: ", result.text);
 }
 
-main();
